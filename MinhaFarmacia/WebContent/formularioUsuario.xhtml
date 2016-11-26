@@ -9,6 +9,7 @@
 </head>
 <h:body>
 	<h1>Novo usuário</h1>
+	
 	<h:form>
 		<fieldset>
 			<legend>Dados do Usuário</legend>
@@ -19,11 +20,8 @@
 				<h:inputText id="email" value="#{usuarioMBean.usuario.email}"/>
 				<h:outputLabel value="Senha" for="senha"/>
 				<h:inputText id="senha" value="#{usuarioMBean.usuario.senha}"/>
-			<!--	<h:outputLabel value="Data de Cadastro" for="data_cadastro"/>
-			 	<h:inputText id="data_cadastro" value="#{usuarioMBean.usuario.data_cadastro}"/>
-				<h:outputLabel value="Data de Nascimento" for="data_nascimento"/>
-				<h:inputText id="data_nascimento" value="#{usuarioMBean.usuario.data_nascimento}"/>
-				--><h:outputLabel value="Sexo" for="sexo"/>
+			
+				<h:outputLabel value="Sexo" for="sexo"/>
 				<h:inputText id="sexo" value="#{usuarioMBean.usuario.sexo}"/>
 			</h:panelGrid>
 		</fieldset>
