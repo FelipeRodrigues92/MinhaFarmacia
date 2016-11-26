@@ -15,7 +15,7 @@ public class UsuarioMBean {
 	public Usuario getUsuario(){
 		return usuario;
 	}
-
+//Linha comentada pra fazer commit
 	public void gravar() {
 		System.out.println("Gravou" + this.usuario.getNome());
 		new DAO<Usuario>(Usuario.class).cadastrar(this.usuario);
