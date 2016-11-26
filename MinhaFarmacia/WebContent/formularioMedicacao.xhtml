@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Cadastro Medicação</title>
+</head>
+<h:body>
+	<h1>Novo Medicação</h1>
+	<h:form>
+		<fieldset>
+			<legend>Dados do Medicação</legend>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Código de barras" for="cod_barras"/>
+				<h:inputText id="cod_barras" value="#{medicacaoMBean.medicacao.cod_barras}"/>
+				<h:outputLabel value="Nome" for="nome"/>
+				<h:inputText id="nome" value="#{medicacaoMBean.medicacao.nome}"/>
+				<h:outputLabel value="Classe terapeutica" for="classe_terapeutica"/>
+				<h:inputText id="classe_terapeutica" value="#{medicacaoMBean.medicacao.classe_terapeutica}"/>
+			<!--	<h:outputLabel value="Data de Cadastro" for="data_cadastro"/>
+			 	<h:inputText id="data_cadastro" value="#{medicacaoMBean.medicacao.data_cadastro}"/>
+				--><h:outputLabel value="Restrição" for="restricao"/>
+				<h:inputText id="restricao" value="#{medicacaoMBean.medicacao.restricao}"/>
+				<h:outputLabel value="Principio ativo" for="principio_ativo"/>
+				<h:inputText id="principio_ativo" value="#{medicacaoMBean.medicacao.principio_ativo}"/>
+			</h:panelGrid>
+		</fieldset>
+		<fieldset>
+			<legend>Usuario</legend>
+			<h:outputLabel value="Selecione usuário" for="usuario"/>
+			<h:selectOneMenu value="#{medicacaoMBean.idUsuario}">
+				<f:selectItems value="#{medicacaoMBean.usuarios}" var="usuario" itemLabel="#{usuario.nome}" itemValue="#{usuario.idUsuario}"/>
+			</h:selectOneMenu>
+			<h:commandButton value="Gravar Usuario" action="#{usuarioMBean.gravar}"/>
+		</fieldset>
+			<h:commandButton value="Gravar" action="#{medicacaoMBean.gravar}"/>
+	</h:form>
+</h:body>
+</html>
