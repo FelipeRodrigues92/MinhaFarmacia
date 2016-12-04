@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+<script src="js/js.js"></script>
+
+</head>
+<h:body>
+	<ul class="nav nav-tabs">
+		<li role="presentation"><a href="login.xhtml">Home</a></li>
+		<li role="presentation" class="active"><a href="#">Listagem</a></li>
+		<li role="presentation"><a href="perfil.xhtml">Perfil</a></li>
+
+		<li role="presentation"><a href="#">Sobre</a></li>
+		<li role="presentation"><a href="#">Contato</a></li>
+	</ul>
+	<div class="nav"></div>
+	<div class="container">
+
+		<div class="row" style="margin-top: 20px">
+			<div class="col-xs-12 col-lg-12 ">
+				<h:dataTable value="#{listagemMBean.medicamentos()}"
+					var="medicamento" class="table table-striped">
+					<f:facet name="header">
+						<h:outputLabel
+							value="Quantidade de Medicamentos: #{listagemMBean.medicamentos().size()}" />
+					</f:facet>
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Codigo de Barra" />
+						</f:facet>
+						<h:outputLabel value="#{medicamento.cod_barras}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Principio Ativo" />
+						</f:facet>
+						<h:outputLabel value="#{medicamento.principio_ativo}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Nome" />
+						</f:facet>
+						<h:outputLabel value="#{medicamento.nome}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Classe Terapeutica" />
+						</f:facet>
+						<h:outputLabel value="#{medicamento.classe_terapeutica}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Laboratorio" />
+						</f:facet>
+						<h:outputLabel value="#{medicamento.laboratorio}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Dosagem" />
+						</f:facet>
+						<h:form>
+							<h:commandButton class="btn btn-lg btn-success btn-block"
+								action="#{listagemMBean.detalharDosagem(medicamento)}"
+								value="Detalhar" />
+						</h:form>
+					</h:column>
+				</h:dataTable>
+				<a href="cadastroMedicamento.xhtml"
+					class="btn btn-lg btn-primary btn-block">Cadastrar Novo
+					Medicamento</a>
+
+			</div>
+		</div>
+	</div>
+
+</h:body>
+</html>

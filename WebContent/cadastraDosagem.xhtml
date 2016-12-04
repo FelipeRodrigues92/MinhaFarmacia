@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+<script src="js/js.js"></script>
+
+</head>
+<h:body>
+	<ul class="nav nav-tabs">
+		<li role="presentation"><a href="login.xhtml">Home</a></li>
+		<li role="presentation" class="active"><a href="#">Dosagem</a></li>
+		<li role="presentation"><a href="perfil.xhtml">Perfil</a></li>
+
+		<li role="presentation"><a href="#">Sobre</a></li>
+		<li role="presentation"><a href="#">Contato</a></li>
+	</ul>
+	<div class="nav"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-offset-0 col-lg-2"></div>
+			<div class="col-lg-8">
+				<h:form id="formExemplo" data-toggle="validator" role="form">
+					<div class="form-group">
+						<label for="quantidade" class="control-label">Quantidade</label>
+						<h:inputText value="#{doseManagedBeam.dose.quantidade}"
+							id="quantidade" class="form-control"
+							placeholder="Nome do medicamento" type="text"
+							onkeypress='return SomenteNumero(event)' />
+					</div>
+					<div class="form-group">
+						<label for="tipo">Tipo</label>
+						<h:selectOneMenu value="#{doseManagedBeam.dose.tipo}"
+							class="form-control" id="tipo">
+							<f:selectItem itemValue="Xarope" itemLabel="Xarope" />
+							<f:selectItem itemValue="Gotas" itemLabel="Gotas" />
+
+							<f:selectItem itemValue="Comprimido" itemLabel="Comprimido" />
+						</h:selectOneMenu>
+					</div>
+					<div class="form-group">
+						<label for="data" class="control-label">Data de Inicio</label>
+						<h:inputText value="#{doseManagedBeam.dataInicio}"
+							class="form-control" id="data" placeholder="01/01/2017"
+							maxlength="10" onkeydown="return SomenteNumero(event)"
+							onkeypress="mascaraData( this, event )" />
+					</div>
+
+
+
+					<div class="form-group">
+						<label for="hora" class="control-label">Hora de Inicio</label>
+						<h:inputText value="#{doseManagedBeam.horaInicio}"
+							class="form-control" id="hora" placeholder="08:45" maxlength="5"
+							onkeydown="return SomenteNumero(event)"
+							onkeypress="mascaraHora( this, event )" />
+					</div>
+
+					<div class="form-group">
+						<label for="intervalo" class="control-label">Intervalo
+							entre consumo </label>
+						<h:inputText value="#{doseManagedBeam.dose.intervalo}"
+							class="form-control" id="intervalo" placeholder="12 horas"
+							maxlength="2" onkeydown="return SomenteNumero(event)" />
+					</div>
+
+					<div class="form-group">
+						<label for="periodo" class="control-label">Periodo de
+							consumo </label>
+						<h:inputText value="#{doseManagedBeam.dose.periodo_consumo}"
+							class="form-control" id="periodo" placeholder="12 dias"
+							maxlength="2" onkeydown="return SomenteNumero(event)" />
+					</div>
+
+					<h:commandButton action="#{doseManagedBeam.gravarMedicamento()}"
+						value="Salvar" class="btn btn-lg btn-success btn-block" />
+				</h:form>
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+<script src="js/js.js"></script>
+
+</head>
+<h:body>
+	<ul class="nav nav-tabs">
+		<li role="presentation"><a href="login.xhtml">Home</a></li>
+		<li role="presentation" class="active"><a href="#">Medicamento</a></li>
+		<li role="presentation"><a href="perfil.xhtml">Perfil</a></li>
+
+		<li role="presentation"><a href="#">Sobre</a></li>
+
+		<li role="presentation"><a href="#">Contato</a></li>
+
+	</ul>
+	<div class="nav"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-offset-0 col-lg-2"></div>
+			<div class="col-lg-8">
+				<h:form id="formExemplo" data-toggle="validator" role="form">
+					<h:panelGroup id="medicamento">
+						<div class="input-group">
+							<label for="inputEmail" class="control-label">Codigo de
+								Barras</label>
+
+							<h:inputText value="#{medicacaoMBean.medicacao.cod_barras}"
+								id="codBarras" type="text" class="form-control"
+								placeholder="Codigo de barras"
+								onkeypress='return SomenteNumero(event)' />
+
+							<span class="input-group-btn"> <h:commandButton
+									action="#{medicacaoMBean.buscar()}" value="Buscar"
+									class="btn btn-default" style="margin-top: 25px;">
+									<f:ajax execute="codBarras" render="medicamento"
+										onevent="sentMessage" />
+								</h:commandButton> <!-- 							<button class="btn btn-default" type="button" style="margin-top: 25px;">Buscar</button>
+ -->
+							</span>
+							<!-- /input-group -->
+						</div>
+
+						<div class="form-group">
+							<label for="inputEmail" class="control-label">Nome</label>
+							<h:inputText value="#{medicacaoMBean.medicacao.nome}" id="nome"
+								class="form-control" placeholder="Nome do medicamento"
+								type="text" />
+						</div>
+
+						<div class="form-group">
+							<label for="inputEmail" class="control-label">Classe
+								Terapeutica</label>
+							<h:inputText
+								value="#{medicacaoMBean.medicacao.classe_terapeutica}"
+								id="classe_terapeutica" class="form-control"
+								placeholder="Classe terapeutica" type="text" />
+						</div>
+
+						<div class="form-group">
+							<label for="inputEmail" class="control-label">Principio
+								Ativo</label>
+							<h:inputText value="#{medicacaoMBean.medicacao.principio_ativo}"
+								id="principio_ativo" class="form-control"
+								placeholder="Principio ativo" type="text" />
+						</div>
+
+						<div class="form-group">
+							<label for="inputEmail" class="control-label">Laboratorio</label>
+							<h:inputText value="#{medicacaoMBean.medicacao.laboratorio}"
+								id="laboratorio" class="form-control" placeholder="Laboratorio"
+								type="text" />
+						</div>
+
+
+					</h:panelGroup>
+
+					<h:commandButton action="#{medicacaoMBean.gravarMedicamento()}"
+						value="Salvar" class="btn btn-lg btn-success btn-block" />
+					<a href="listagem.xhtml" class="btn btn-lg btn-primary btn-block">Listar
+						Medicamentos</a>
+				</h:form>
+
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>

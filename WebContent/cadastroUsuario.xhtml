@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+<script src="js/js.js"></script>
+
+</head>
+<h:body>
+	<ul class="nav nav-tabs">
+		<li role="presentation"><a href="login.xhtml">Home</a></li>
+		<li role="presentation" class="active"><a href="#">Dosagem</a></li>
+		<li role="presentation"><a href="perfil.xhtml">Perfil</a></li>
+
+		<li role="presentation"><a href="#">Sobre</a></li>
+		<li role="presentation"><a href="#">Contato</a></li>
+	</ul>
+	<div class="nav"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-offset-0 col-lg-2"></div>
+			<div class="col-lg-8">
+
+				<h:form id="formExemplo" data-toggle="validator" role="form">
+
+					<div class="form-group">
+						<label for="textNome" class="control-label">Nome</label>
+
+						<h:inputText value="#{usuarioMBean.usuario.nome}" id="textNome"
+							class="form-control" placeholder="Digite seu Nome..." type="text" />
+					</div>
+
+					<div class="form-group">
+						<label for="inputEmail" class="control-label">Email</label>
+						<h:inputText value="#{usuarioMBean.usuario.email}" id="inputEmail"
+							class="form-control" placeholder="Digite seu E-mail" type="email" />
+					</div>
+
+					<div class="form-group">
+						<label for="inputPassword" class="control-label">Senha</label>
+						<h:inputSecret value="#{usuarioMBean.usuario.senha}"
+							type="password" class="form-control" id="inputPassword"
+							placeholder="Digite sua Senha..." />
+					</div>
+
+					<div class="form-group">
+						<label for="sel1">Sexo</label>
+						<h:selectOneMenu value="#{usuarioMBean.usuario.sexo}"
+							class="form-control" id="sel1">
+							<f:selectItem itemValue="F" itemLabel="Feminino" />
+							<f:selectItem itemValue="M" itemLabel="Masculino" />
+
+						</h:selectOneMenu>
+
+
+					</div>
+					<div class="form-group">
+						<label for="inputPassword" class="control-label">Data de
+							Nascimento</label>
+						<h:inputText value="#{usuarioMBean.dataNascimento}"
+							class="form-control" id="data" placeholder="01/03/1995"
+							maxlength="10" onkeydown="PermiteNumeros()"
+							onkeypress="mascaraData( this, event )" />
+					</div>
+					<h:commandButton action="#{usuarioMBean.gravar()}" value="Salvar"
+						class="btn btn-lg btn-success btn-block" />
+
+				</h:form>
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>
